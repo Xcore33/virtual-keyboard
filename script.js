@@ -201,7 +201,6 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("menu");
 
           keyElement.addEventListener("click", () => {
-            this._changeRU();
             this._triggerEvent("oninput");
           });
 
@@ -419,7 +418,6 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("menu");
 
           keyElement.addEventListener("click", () => {
-            this._changeRU();
             this._triggerEvent("oninput");
           });
 

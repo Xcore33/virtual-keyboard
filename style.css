@@ -6,6 +6,14 @@
     background: rgb(101, 100, 104);
 }
 
+.keyboard2 {
+  position: relative;
+  width: 80%;
+  padding: 25px 0;
+  margin: 0 auto;
+  background: rgb(101, 100, 104);
+}
+
 .keyboard-hidden {
     bottom: -100%;
 }

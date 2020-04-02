@@ -103,12 +103,12 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("arrow_upward");
 
           keyElement.addEventListener("mousedown", () => {
-            this._toggleShift();
+            this._toggleShiftEN();
             this._triggerEvent("oninput");
           });
 
           keyElement.addEventListener("mouseup", () => {
-            this._toggleShift();
+            this._toggleShiftEN();
             this._triggerEvent("oninput");
           });
 
@@ -119,12 +119,12 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("arrow_upward");
 
           keyElement.addEventListener("mousedown", () => {
-            this._toggleShift();
+            this._toggleShiftEN();
             this._triggerEvent("oninput");
           });
 
           keyElement.addEventListener("mouseup", () => {
-            this._toggleShift();
+            this._toggleShiftEN();
             this._triggerEvent("oninput");
           });
 
@@ -168,7 +168,7 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("keyboard_capslock");
 
           keyElement.addEventListener("click", () => {
-            this._toggleCapsLock();
+            this._toggleCapsLockEN();
             keyElement.classList.toggle("keyboard-key-active", this.properties.capsLock);
           });
 
@@ -493,12 +493,33 @@ const Keyboard = {
     }
   },
 
+  _toggleCapsLockEN() {
+    this.properties.capsLock = !this.properties.capsLock;
+
+    for (const key of this.elements.CAPS) {
+      if (key.childElementCount === 0) {
+        key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+      }
+    }
+  },
+
   _toggleCapsLock() {
     this.properties.capsLock = !this.properties.capsLock;
 
     for (const key of this.elements.CAPSRU) {
       if (key.childElementCount === 0) {
         key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+      }
+    }
+  },
+
+  _toggleShiftEN() {
+    this.properties.capsLock = !this.properties.capsLock;
+
+    for (const key of this.elements.CAPS) {
+      if (key.childElementCount === 0) {
+        key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+
       }
     }
   },

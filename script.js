@@ -23,8 +23,8 @@ const Keyboard = {
     let textarea = document.createElement("textarea");
     let main = document.createElement("div");
     let mainRU = document.createElement("div");
-    let keysContainer = document.createElement("div");
-    let keysContainerRU = document.createElement("div");
+    let keysContainer = document.createElement("ul");
+    let keysContainerRU = document.createElement("ul");
     let countOfClicks = 0;
 
     // Setup main elements
@@ -72,7 +72,7 @@ const Keyboard = {
     };
 
     keyLayout.forEach(key => {
-      const keyElement = document.createElement("button");
+      const keyElement = document.createElement("li");
       const insertLineBreak = ["backspace", "]", "enter", "up", "ъ"].indexOf(key) !== -1;
 
       // Add attributes/classes
@@ -200,7 +200,12 @@ const Keyboard = {
           keyElement.classList.add("keyboard-key");
           keyElement.innerHTML = createIconHTML("menu");
 
-          keyElement.addEventListener("click", () => {
+          keyElement.addEventListener("mousedown", () => {
+            this._triggerEvent("oninput");
+          });
+
+          keyElement.addEventListener("mouseup", () => {
+            this._colorada();
             this._triggerEvent("oninput");
           });
 
@@ -289,7 +294,7 @@ const Keyboard = {
     };
 
     keyLayout.forEach(key => {
-      const keyElement = document.createElement("button");
+      const keyElement = document.createElement("li");
       const insertLineBreak = ["backspace", "]", "enter", "up", "ъ"].indexOf(key) !== -1;
 
       // Add attributes/classes
@@ -547,4 +552,206 @@ const Keyboard = {
 window.addEventListener("DOMContentLoaded", function () {
   Keyboard.init();
 });
+
+//keyboard reaction
+
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'Backquote') {
+    document.querySelectorAll('li.keyboard-key:nth-child(1)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit1') {
+    document.querySelectorAll('li.keyboard-key:nth-child(2)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit2') {
+    document.querySelectorAll('li.keyboard-key:nth-child(3)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit3') {
+    document.querySelectorAll('li.keyboard-key:nth-child(4)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit4') {
+    document.querySelectorAll('li.keyboard-key:nth-child(5)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit5') {
+    document.querySelectorAll('li.keyboard-key:nth-child(6)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit6') {
+    document.querySelectorAll('li.keyboard-key:nth-child(7)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit7') {
+    document.querySelectorAll('li.keyboard-key:nth-child(8)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit8') {
+    document.querySelectorAll('li.keyboard-key:nth-child(9)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit9') {
+    document.querySelectorAll('li.keyboard-key:nth-child(10)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Digit0') {
+    document.querySelectorAll('li.keyboard-key:nth-child(11)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Minus') {
+    document.querySelectorAll('li.keyboard-key:nth-child(12)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Equal') {
+    document.querySelectorAll('li.keyboard-key:nth-child(13)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Backspace') {
+    document.querySelectorAll('li.keyboard-key:nth-child(14)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Tab') {
+    // event.preventDefault();
+    document.querySelectorAll('li.keyboard-key:nth-child(16)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyQ') {
+    document.querySelectorAll('li.keyboard-key:nth-child(17)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyW') {
+    document.querySelectorAll('li.keyboard-key:nth-child(18)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyE') {
+    document.querySelectorAll('li.keyboard-key:nth-child(19)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyR') {
+    document.querySelectorAll('li.keyboard-key:nth-child(20)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyT') {
+    document.querySelectorAll('li.keyboard-key:nth-child(21)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyY') {
+    document.querySelectorAll('li.keyboard-key:nth-child(22)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyU') {
+    document.querySelectorAll('li.keyboard-key:nth-child(23)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyI') {
+    document.querySelectorAll('li.keyboard-key:nth-child(24)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyO') {
+    document.querySelectorAll('li.keyboard-key:nth-child(25)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyP') {
+    document.querySelectorAll('li.keyboard-key:nth-child(26)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'BracketLeft') {
+    document.querySelectorAll('li.keyboard-key:nth-child(27)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'BracketRight') {
+    document.querySelectorAll('li.keyboard-key:nth-child(28)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyA') {
+    document.querySelectorAll('li.keyboard-key:nth-child(31)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyS') {
+    document.querySelectorAll('li.keyboard-key:nth-child(32)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyD') {
+    document.querySelectorAll('li.keyboard-key:nth-child(33)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyF') {
+    document.querySelectorAll('li.keyboard-key:nth-child(34)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyG') {
+    document.querySelectorAll('li.keyboard-key:nth-child(35)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyH') {
+    document.querySelectorAll('li.keyboard-key:nth-child(36)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyJ') {
+    document.querySelectorAll('li.keyboard-key:nth-child(37)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyK') {
+    document.querySelectorAll('li.keyboard-key:nth-child(38)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyL') {
+    document.querySelectorAll('li.keyboard-key:nth-child(39)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Semicolon') {
+    document.querySelectorAll('li.keyboard-key:nth-child(40)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Quote') {
+    document.querySelectorAll('li.keyboard-key:nth-child(41)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Backslash') {
+    document.querySelectorAll('li.keyboard-key:nth-child(42)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Enter') {
+    document.querySelectorAll('li.keyboard-key:nth-child(43)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ShiftLeft') {
+    document.querySelectorAll('li.keyboard-key:nth-child(45)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyZ') {
+    document.querySelectorAll('li.keyboard-key:nth-child(46)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyX') {
+    document.querySelectorAll('li.keyboard-key:nth-child(47)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyC') {
+    document.querySelectorAll('li.keyboard-key:nth-child(48)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyV') {
+    document.querySelectorAll('li.keyboard-key:nth-child(49)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyB') {
+    document.querySelectorAll('li.keyboard-key:nth-child(50)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyN') {
+    document.querySelectorAll('li.keyboard-key:nth-child(51)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'KeyM') {
+    document.querySelectorAll('li.keyboard-key:nth-child(52)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Comma') {
+    document.querySelectorAll('li.keyboard-key:nth-child(53)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Period') {
+    document.querySelectorAll('li.keyboard-key:nth-child(54)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Slash') {
+    document.querySelectorAll('li.keyboard-key:nth-child(55)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ShiftRight') {
+    document.querySelectorAll('li.keyboard-key:nth-child(56)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ArrowUp') {
+    document.querySelectorAll('li.keyboard-key:nth-child(57)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ControlLeft') {
+    document.querySelectorAll('li.keyboard-key:nth-child(59)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'MetaLeft') {
+    document.querySelectorAll('li.keyboard-key:nth-child(60)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'AltLeft') {
+    document.querySelectorAll('li.keyboard-key:nth-child(61)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'Space') {
+    document.querySelectorAll('li.keyboard-key:nth-child(62)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'AltRight') {
+    document.querySelectorAll('li.keyboard-key:nth-child(63)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ControlRight') {
+    document.querySelectorAll('li.keyboard-key:nth-child(64)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ArrowLeft') {
+    document.querySelectorAll('li.keyboard-key:nth-child(65)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ArrowDown') {
+    document.querySelectorAll('li.keyboard-key:nth-child(66)').forEach(el => el.classList.add('push'));
+  }
+  if (event.code == 'ArrowRight') {
+    document.querySelectorAll('li.keyboard-key:nth-child(67)').forEach(el => el.classList.add('push'));
+  }
+
+
+  setTimeout(() =>  document.querySelectorAll('li.keyboard-key').forEach(el => el.classList.remove('push')), 300);
+});
+
+
+// document.addEventListener('keydown', function(event2) {
+//     if (event2.code == 'CapsLock') {
+//     document.querySelectorAll('li.keyboard-key:nth-child(30)').forEach(el => el._toggleCapsLockEN);
+// }}
+// )
 

@@ -93,11 +93,9 @@ i.material-icons {
 
 .textarea {
   position: relative;
-  top: 40;
-  left: 0;
-
-  width: 100%;
+  width: 70%;
   height: 400px;
+  left: 15%;
 }
 
 li {
@@ -109,17 +107,24 @@ li {
 }
 
 .helptips {
+  z-index: -2;
   position: absolute;
 
   width: 25%;
   margin-left: 15%;
-  padding: 7px 0;
+  margin-top: -10px;
+  padding: 20px 0 7px 0;
 
-  background: linear-gradient(grey, #293f50);
+  background: linear-gradient(#293f50, grey);
   border: none;
   border-radius: 7px;;
   text-align: center;
   text-transform: uppercase;
   color: aliceblue;
   font-size: 1.5rem;
+}
+
+.helptips span {
+font-size: 0.9rem;
+font-weight: bold;
 }

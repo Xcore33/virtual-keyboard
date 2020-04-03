@@ -37,7 +37,7 @@ const Keyboard = {
     keysContainer.classList.add("keyboard-keys");
     keysContainerRU.classList.add("keyboard-keys");
     this.helptips.classList.add('helptips');
-    this.helptips.innerText = 'Ctrl + alt - change language';
+    this.helptips.innerHTML = 'Ctrl + alt - change language <br> <span>create for windows<span>';
 
     this.elements.CAPS = keysContainer.querySelectorAll(".keyboard-key");
     this.elements.CAPSRU = keysContainerRU.querySelectorAll(".keyboard-key");

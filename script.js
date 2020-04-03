@@ -37,8 +37,7 @@ const Keyboard = {
     keysContainer.classList.add("keyboard-keys");
     keysContainerRU.classList.add("keyboard-keys");
     this.helptips.classList.add('helptips');
-    this.helptips.innerHTML = 'Ctrl + alt - change language <br> <span>create for windows<span>';
-
+    this.helptips.innerHTML = 'Ctrl + alt - change language <br> <span>create for windows by xcore33<span>';
     this.elements.CAPS = keysContainer.querySelectorAll(".keyboard-key");
     this.elements.CAPSRU = keysContainerRU.querySelectorAll(".keyboard-key");
 
@@ -50,6 +49,7 @@ const Keyboard = {
     document.body.appendChild(main);
     document.body.appendChild(mainRU);
     document.body.appendChild(this.helptips);
+    textarea.placeholder = "For start working - please click here"
 
 
     // Automatically use keyboard for textare

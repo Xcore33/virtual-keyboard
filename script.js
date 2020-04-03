@@ -25,7 +25,8 @@ const Keyboard = {
     let mainRU = document.createElement("div");
     let keysContainer = document.createElement("ul");
     let keysContainerRU = document.createElement("ul");
-    let countOfClicks = 0;
+    this.helptips = document.createElement('div');
+
 
     // Setup main elements
     keysContainer.appendChild(this._createKeys());
@@ -35,9 +36,12 @@ const Keyboard = {
     mainRU.classList.add("keyboard2");
     keysContainer.classList.add("keyboard-keys");
     keysContainerRU.classList.add("keyboard-keys");
+    this.helptips.classList.add('helptips');
+    this.helptips.innerText = 'Ctrl + alt - change language';
 
     this.elements.CAPS = keysContainer.querySelectorAll(".keyboard-key");
     this.elements.CAPSRU = keysContainerRU.querySelectorAll(".keyboard-key");
+
 
     // Add to DOM
     document.body.appendChild(textarea);
@@ -45,8 +49,10 @@ const Keyboard = {
     mainRU.appendChild(keysContainerRU);
     document.body.appendChild(main);
     document.body.appendChild(mainRU);
+    document.body.appendChild(this.helptips);
 
-    // Automatically use keyboard for elements with .use-keyboard-input
+
+    // Automatically use keyboard for textare
     document.querySelectorAll("textarea").forEach(element => {
       element.addEventListener("focus", () => {
         this.open(element.value, currentValue => {
@@ -771,6 +777,7 @@ function runOnKeys(func, ...codes) {
 
 }
 let visible = true;
+
 runOnKeys(
   () => {
     if (visible) {
@@ -785,3 +792,43 @@ runOnKeys(
   "AltLeft"
 );
 
+runOnKeys(
+  () => {
+    if (visible) {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'none')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'block'));
+      visible = false;
+    } else {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'block')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'none'));
+      visible = true;
+    }
+  },
+  "ControlRight",
+  "AltRight"
+);
+runOnKeys(
+  () => {
+    if (visible) {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'none')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'block'));
+      visible = false;
+    } else {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'block')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'none'));
+      visible = true;
+    }
+  },
+  "ControlLeft",
+  "AltRight"
+);
+
+runOnKeys(
+  () => {
+    if (visible) {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'none')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'block'));
+      visible = false;
+    } else {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'block')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'none'));
+      visible = true;
+    }
+  },
+  "ControlRight",
+  "AltLeft"
+);

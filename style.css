@@ -107,3 +107,19 @@ li {
 .push {
   background-color: crimson;
 }
+
+.helptips {
+  position: absolute;
+
+  width: 25%;
+  margin-left: 15%;
+  padding: 7px 0;
+
+  background: linear-gradient(grey, #293f50);
+  border: none;
+  border-radius: 7px;;
+  text-align: center;
+  text-transform: uppercase;
+  color: aliceblue;
+  font-size: 1.5rem;
+}

@@ -555,7 +555,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //keyboard reaction
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
   if (event.code == 'Backquote') {
     document.querySelectorAll('li.keyboard-key:nth-child(1)').forEach(el => el.classList.add('push'));
   }
@@ -745,13 +745,43 @@ document.addEventListener('keydown', function(event) {
   }
 
 
-  setTimeout(() =>  document.querySelectorAll('li.keyboard-key').forEach(el => el.classList.remove('push')), 300);
+  setTimeout(() => document.querySelectorAll('li.keyboard-key').forEach(el => el.classList.remove('push')), 300);
 });
 
+//language switcher
+function runOnKeys(func, ...codes) {
+  let pressed = new Set();
 
-// document.addEventListener('keydown', function(event2) {
-//     if (event2.code == 'CapsLock') {
-//     document.querySelectorAll('li.keyboard-key:nth-child(30)').forEach(el => el._toggleCapsLockEN);
-// }}
-// )
+  document.addEventListener('keydown', function (event2) {
+    pressed.add(event2.code);
+
+    for (let code of codes) {
+      if (!pressed.has(code)) {
+        return;
+      }
+    }
+    pressed.clear();
+
+    func();
+  });
+
+  document.addEventListener('keyup', function (event2) {
+    pressed.delete(event2.code);
+  });
+
+}
+let visible = true;
+runOnKeys(
+  () => {
+    if (visible) {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'none')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'block'));
+      visible = false;
+    } else {
+      (document.querySelectorAll('.keyboard').forEach(el => el.style.display = 'block')) & (document.querySelectorAll('.keyboard2').forEach(el => el.style.display = 'none'));
+      visible = true;
+    }
+  },
+  "ControlLeft",
+  "AltLeft"
+);
 

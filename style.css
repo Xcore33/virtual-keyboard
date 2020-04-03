@@ -1,6 +1,6 @@
 html {
-  font-family: sans-serif;
   font-size: smaller;
+  font-family: sans-serif;
 }
 
 i.material-icons {
@@ -15,10 +15,9 @@ i.material-icons {
   margin: 0 auto;
   padding: 20px 0;
 
-  background: linear-gradient(grey, #293f50);;
+  background: linear-gradient(grey, #293f50);
   border: none;
-  border-radius: 50px;
-
+  border-radius: 50px;;
 }
 
 .keyboard2 {
@@ -105,12 +104,6 @@ li {
   list-style: none;
 }
 
-
-/* ul.keyboard-key:nth-child(2) {
-  background-color: crimson;
-} */
-
 .push {
   background-color: crimson;
 }
-

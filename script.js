@@ -722,7 +722,7 @@ function runOnKeys(func, ...codes) {
   const pressed = new Set();
 
   document.addEventListener('keydown', (event2) => {
-    pressed.add(event2.code);
+    pressed.add(event2.key);
 
     for (const code of codes) {
       if (!pressed.has(code)) {
@@ -735,9 +735,10 @@ function runOnKeys(func, ...codes) {
   });
 
   document.addEventListener('keyup', (event2) => {
-    pressed.delete(event2.code);
+    pressed.delete(event2.key);
   });
 }
+
 let visible = true;
 
 runOnKeys(
@@ -752,9 +753,11 @@ runOnKeys(
       visible = true;
     }
   },
-  'ControlLeft',
-  'AltLeft',
+  'Control',
+  'Alt',
 );
+
+
 
 document.addEventListener('keyup', (event) => {
   if (event.getModifierState('CapsLock')) {

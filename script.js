@@ -1,4 +1,5 @@
 const Keyboard = {
+
   elements: {
     main: null,
     mainRU: null,
@@ -18,8 +19,8 @@ const Keyboard = {
 
   init() {
 
-
     // Create main elements
+
     let textarea = document.createElement("textarea");
     let main = document.createElement("div");
     let mainRU = document.createElement("div");
@@ -27,8 +28,8 @@ const Keyboard = {
     let keysContainerRU = document.createElement("ul");
     this.helptips = document.createElement('div');
 
-
     // Setup main elements
+
     keysContainer.appendChild(this._createKeys());
     keysContainerRU.appendChild(this._createKeysRU());
     textarea.classList.add("textarea");
@@ -41,18 +42,18 @@ const Keyboard = {
     this.elements.CAPS = keysContainer.querySelectorAll(".keyboard-key");
     this.elements.CAPSRU = keysContainerRU.querySelectorAll(".keyboard-key");
 
-
     // Add to DOM
+
     document.body.appendChild(textarea);
     main.appendChild(keysContainer);
     mainRU.appendChild(keysContainerRU);
     document.body.appendChild(main);
     document.body.appendChild(mainRU);
     document.body.appendChild(this.helptips);
-    textarea.placeholder = "For start working - please click here"
-
+    textarea.placeholder = "For start working - please click here",
 
     // Automatically use keyboard for textare
+
     document.querySelectorAll("textarea").forEach(element => {
       element.addEventListener("focus", () => {
         this.open(element.value, currentValue => {
@@ -61,6 +62,7 @@ const Keyboard = {
       });
     });
   },
+
 
   _createKeys() {
     const fragment = document.createDocumentFragment();
@@ -73,6 +75,7 @@ const Keyboard = {
     ];
 
     // Creates HTML for an icon
+
     const createIconHTML = (icon_name) => {
       return `<i class="material-icons">${icon_name}</i>`;
     };
@@ -82,6 +85,7 @@ const Keyboard = {
       const insertLineBreak = ["backspace", "]", "enter", "up", "ъ"].indexOf(key) !== -1;
 
       // Add attributes/classes
+
       keyElement.setAttribute("type", "button");
       keyElement.classList.add("keyboard-key");
 
@@ -176,6 +180,7 @@ const Keyboard = {
           keyElement.addEventListener("click", () => {
             this._toggleCapsLockEN();
             keyElement.classList.toggle("keyboard-key-active", this.properties.capsLock);
+
           });
 
           break;
@@ -293,8 +298,6 @@ const Keyboard = {
       "ctrl", "win", "alt", "space", "alt", "ctrl", "left", "down", "right"
     ];
 
-
-    // Creates HTML for an icon
     const createIconHTML = (icon_name) => {
       return `<i class="material-icons">${icon_name}</i>`;
     };
@@ -302,8 +305,6 @@ const Keyboard = {
     keyLayout.forEach(key => {
       const keyElement = document.createElement("li");
       const insertLineBreak = ["backspace", "]", "enter", "up", "ъ"].indexOf(key) !== -1;
-
-      // Add attributes/classes
       keyElement.setAttribute("type", "button");
       keyElement.classList.add("keyboard-key");
 
@@ -549,15 +550,9 @@ const Keyboard = {
   open(initialValue, oninput, onclose) {
     this.properties.value = initialValue || "";
     this.eventHandlers.oninput = oninput;
-    // this.eventHandlers.onclose = onclose;
   },
 
 };
-
-
-window.addEventListener("DOMContentLoaded", function () {
-  Keyboard.init();
-});
 
 //keyboard reaction
 
@@ -749,12 +744,11 @@ document.addEventListener('keydown', function (event) {
   if (event.code == 'ArrowRight') {
     document.querySelectorAll('li.keyboard-key:nth-child(67)').forEach(el => el.classList.add('push'));
   }
-
-
   setTimeout(() => document.querySelectorAll('li.keyboard-key').forEach(el => el.classList.remove('push')), 300);
 });
 
 //language switcher
+
 function runOnKeys(func, ...codes) {
   let pressed = new Set();
 
@@ -832,3 +826,18 @@ runOnKeys(
   "ControlRight",
   "AltLeft"
 );
+
+//caps lock check
+
+  document.addEventListener('keyup', function (event) {
+    if (event.getModifierState("CapsLock")) {
+      document.querySelectorAll('.keyboard-key-activatable').forEach(el => el.classList.add('keyboard-key-active'));
+    } else {
+      document.querySelectorAll('.keyboard-key-activatable').forEach(el => el.classList.remove('keyboard-key-active'));
+    }
+  });
+
+window.addEventListener("DOMContentLoaded", function () {
+  Keyboard.init();
+});
+

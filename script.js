@@ -4,7 +4,6 @@ const Keyboard = {
     main: null,
     mainRU: null,
     keysContainer: null,
-    keysContainerRU: null,
     CAPS: [],
     CAPSRU: [],
   },
@@ -19,49 +18,48 @@ const Keyboard = {
   },
 
   init() {
-    const textarea = document.createElement('textarea');
-    const main = document.createElement('div');
-    const mainRU = document.createElement('div');
-    const keysContainer = document.createElement('ul');
-    const keysContainerRU = document.createElement('ul');
+    this.textarea = document.createElement('textarea');
+    this.main = document.createElement('div');
+    this.mainRU = document.createElement('div');
+    this.keysContainer = document.createElement('ul');
+    this.keysContainerRU = document.createElement('ul');
     this.helptips = document.createElement('div');
 
-    keysContainer.appendChild(this.createKeys());
-    keysContainerRU.appendChild(this.createKeysRU());
-    textarea.classList.add('textarea');
-    main.classList.add('keyboard');
-    mainRU.classList.add('keyboard2');
-    keysContainer.classList.add('keyboard-keys');
-    keysContainerRU.classList.add('keyboard-keys');
+    this.keysContainer.appendChild(this.createKeys());
+    this.keysContainerRU.appendChild(this.createKeysRU());
+    this.textarea.classList.add('textarea');
+    this.main.classList.add('keyboard');
+    this.mainRU.classList.add('keyboard2');
+    this.keysContainer.classList.add('keyboard-keys');
+    this.keysContainerRU.classList.add('keyboard-keys');
     this.helptips.classList.add('helptips');
     this.helptips.innerHTML = 'Ctrl + alt - change language <br> <span>create for windows by xcore33<span>';
-    this.elements.CAPS = keysContainer.querySelectorAll('.keyboard-key');
-    this.elements.CAPSRU = keysContainerRU.querySelectorAll('.keyboard-key');
+    this.elements.CAPS = this.keysContainer.querySelectorAll('.keyboard-key');
+    this.elements.CAPSRU = this.keysContainerRU.querySelectorAll('.keyboard-key');
 
-    document.body.appendChild(textarea);
-    main.appendChild(keysContainer);
-    mainRU.appendChild(keysContainerRU);
-    document.body.appendChild(main);
-    document.body.appendChild(mainRU);
+    document.body.appendChild(this.textarea);
+    this.main.appendChild(this.keysContainer);
+    this.mainRU.appendChild(this.keysContainerRU);
+    document.body.appendChild(this.main);
+    document.body.appendChild(this.mainRU);
     document.body.appendChild(this.helptips);
-    textarea.placeholder = 'For start working - please click here';
+    this.textarea.placeholder = 'For start working - please click here';
 
-    document.querySelectorAll('textarea').forEach((element) => {
+    document.querySelectorAll('textarea').forEach(element => {
       element.addEventListener('focus', () => {
-        document.open(element.value, (currentValue) => {
+        this.open(element.value, (currentValue) => {
           element.value = currentValue;
         });
       });
     });
   },
 
-
   createKeys() {
     const fragment = document.createDocumentFragment();
     const keyLayout = [
       '~', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', 'backspace',
       'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
-      'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", '|', 'enter',
+      'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', '|', 'enter',
       'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?', 'shiftR', 'up',
       'ctrl', 'win', 'alt', 'space', 'alt', 'ctrl', 'left', 'down', 'right',
     ];
@@ -758,7 +756,7 @@ runOnKeys(
   'AltLeft',
 );
 
-this.addEventListener('keyup', (event) => {
+document.addEventListener('keyup', (event) => {
   if (event.getModifierState('CapsLock')) {
     document.querySelectorAll('.keyboard-key-activatable').forEach((el) => el.classList.add('keyboard-key-active'));
   } else {

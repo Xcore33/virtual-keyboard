@@ -44,9 +44,10 @@ const Keyboard = {
     this.textarea.placeholder = 'For start working - please click here';
 
     document.querySelectorAll('textarea').forEach((element) => {
+      const ele = element;
       element.addEventListener('focus', () => {
-        this.open(element.value, (currentValue) => {
-          element.value = currentValue;
+        this.open(ele.value, (currentValue) => {
+          ele.value = currentValue;
         });
       });
     });
@@ -753,20 +754,22 @@ let visible = true;
 
 runOnKeys(
   () => {
+    const keyEN = document.querySelectorAll('.keyboard');
+    const keyRU = document.querySelectorAll('.keyboard2');
+
     if (visible) {
-      (document.querySelectorAll('.keyboard').forEach((el) => el.style.display = 'none')),
-      (document.querySelectorAll('.keyboard2').forEach((el) => el.style.display = 'block')),
+      keyEN.forEach((el) => el.style.display = 'none'),
+      keyRU.forEach((el) => el.style.display = 'block'),
       visible = false;
     } else {
-      (document.querySelectorAll('.keyboard').forEach((el) => el.style.display = 'block')),
-      (document.querySelectorAll('.keyboard2').forEach((el) => el.style.display = 'none')),
+      keyEN.forEach((el) => el.style.display = 'block'),
+      keyRU.forEach((el) => el.style.display = 'none'),
       visible = true;
     }
   },
   'Control',
   'Alt',
 );
-
 
 document.addEventListener('keyup', (event) => {
   if (event.getModifierState('CapsLock')) {

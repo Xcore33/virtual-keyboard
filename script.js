@@ -50,7 +50,7 @@ const Keyboard = {
     document.body.appendChild(main);
     document.body.appendChild(mainRU);
     document.body.appendChild(this.helptips);
-    textarea.placeholder = "For start working - please click here",
+    textarea.placeholder = "For start working - please click here";
 
     // Automatically use keyboard for textare
 

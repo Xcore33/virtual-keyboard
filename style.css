@@ -1,6 +1,12 @@
+* {
+  transition: 0.1s;
+  transition-timing-function: linear;
+}
+
 html {
   font-size: smaller;
   font-family: sans-serif;
+  background: whitesmoke;
 }
 
 i.material-icons {
@@ -11,18 +17,23 @@ i.material-icons {
 .keyboard2 {
   position: relative;
 
-  width: 80%;
+  width: 1100px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 15px 0;
 
-  background: linear-gradient(grey, #293f50);
-  border: none;
-  border-radius: 50px;
+  background: radial-gradient(circle, rgba(82,97,103,1) 0%, rgba(104,109,139,1) 35%, rgb(85, 86, 88) 98%);
+  border: 2px rgba(82,97,103,1) solid;
+  border-radius: 25px;
   display: block;
+  box-shadow: 0 0 0.7em rgb(0,0,0);
 }
 
 #KeyboardRU {
   display: none;
+}
+
+.spacing {
+  margin-left: 10px;
 }
 
 .keyboard-hidden {
@@ -39,7 +50,7 @@ i.material-icons {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 4%;
+  width: 4.3%;
   max-width: 90px;
   height: 45px;
   margin: 3px;
@@ -50,14 +61,21 @@ i.material-icons {
   color: whitesmoke;
 
   background: rgba(90, 166, 216, 0.5);
-  border: none;
+  border: 1.5px rgba(90, 166, 216, 0.8) solid;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
+  box-shadow: 0 0 0.2em rgba(0,0,0,0.4);
+}
+
+.keyboard-key:hover {
+  border-color: rgb(91, 177, 235);
 }
 
 .keyboard-key:active {
-  background: rosybrown;
+
+  transform: scale(0.9);
+  box-shadow: 0 0 0.6em rgba(0,0,0,0.6);
 }
 
 .keyboard-key-wide {
@@ -65,9 +83,9 @@ i.material-icons {
 }
 
 .keyboard-key-up {
-  left: 2.65%;
+  left: 3.7%;
 
-  width: 4%;
+  width: 4.3%;
 }
 
 .keyboard-key-extra-wide {
@@ -97,6 +115,10 @@ i.material-icons {
   width: 70%;
   height: 400px;
   left: 15%;
+  box-shadow: 0 0 0.4em rgba(0,0,0,0.8);
+  border: none;
+  border-radius: 15px;
+  padding: 20px 0 0 20px;
 }
 
 li {
@@ -104,7 +126,10 @@ li {
 }
 
 .push {
-  background-color: crimson;
+  background-color: rgba(220, 20, 60, 0.7);
+  transform: scale(0.9);
+  box-shadow: 0 0 0.4em rgba(0,0,0,0.4);
+  border-color: rgba(220, 20, 60, 0.7);
 }
 
 .helptips {
@@ -112,7 +137,7 @@ li {
   position: absolute;
 
   width: 25%;
-  margin-left: 15%;
+  margin-left: 23%;
   margin-top: -10px;
   padding: 20px 0 7px 0;
 
@@ -123,6 +148,7 @@ li {
   text-transform: uppercase;
   color: aliceblue;
   font-size: 1.5rem;
+  box-shadow: 0 0 0.4em rgba(0,0,0,0.6);
 }
 
 .helptips span {

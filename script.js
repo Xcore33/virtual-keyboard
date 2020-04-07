@@ -142,7 +142,7 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML('keyboard_tab');
 
           keyElement.addEventListener('click', () => {
-            this.properties.value += '     ';
+            this.properties.value += '\t';
             this.triggerEvent('oninput');
           });
 
@@ -360,7 +360,7 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML('keyboard_tab');
 
           keyElement.addEventListener('click', () => {
-            this.properties.value += '     ';
+            this.properties.value += '\t';
             this.triggerEvent('oninput');
           });
 
@@ -662,9 +662,6 @@ document.addEventListener('keydown', (event) => {
   if (event.code === 'Enter') {
     document.querySelectorAll('li.keyboard-key:nth-child(43)').forEach((el) => el.classList.add('push'));
   }
-  if (event.code === 'ShiftLeft') {
-    document.querySelectorAll('li.keyboard-key:nth-child(45)').forEach((el) => el.classList.add('push'));
-  }
   if (event.code === 'KeyZ') {
     document.querySelectorAll('li.keyboard-key:nth-child(46)').forEach((el) => el.classList.add('push'));
   }
@@ -695,9 +692,6 @@ document.addEventListener('keydown', (event) => {
   if (event.code === 'Slash') {
     document.querySelectorAll('li.keyboard-key:nth-child(55)').forEach((el) => el.classList.add('push'));
   }
-  if (event.code === 'ShiftRight') {
-    document.querySelectorAll('li.keyboard-key:nth-child(56)').forEach((el) => el.classList.add('push'));
-  }
   if (event.code === 'ArrowUp') {
     document.querySelectorAll('li.keyboard-key:nth-child(57)').forEach((el) => el.classList.add('push'));
   }
@@ -727,6 +721,12 @@ document.addEventListener('keydown', (event) => {
   }
   if (event.code === 'ArrowRight') {
     document.querySelectorAll('li.keyboard-key:nth-child(67)').forEach((el) => el.classList.add('push'));
+  }
+  if (event.getModifierState('Shift') && event.code === 'ShiftRight') {
+    document.querySelectorAll('li.keyboard-key:nth-child(56)').forEach((el) => el.classList.add('push'));
+  }
+  if (event.getModifierState('Shift') && event.code === 'ShiftLeft') {
+    document.querySelectorAll('li.keyboard-key:nth-child(45)').forEach((el) => el.classList.add('push'));
   }
   setTimeout(() => document.querySelectorAll('li.keyboard-key').forEach((el) => el.classList.remove('push')), 300);
 });

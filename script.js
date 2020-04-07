@@ -45,7 +45,6 @@ const Keyboard = {
     document.body.appendChild(this.mainRU);
     document.body.appendChild(this.helptips);
     this.textarea.placeholder = 'For start working - please click here';
-    document.getElementById('Textarea').focus();
 
     document.querySelectorAll('textarea').forEach((element) => {
       const ele = element;
@@ -80,15 +79,8 @@ const Keyboard = {
         case 'backspace':
           keyElement.classList.add('keyboard-key-wide');
           keyElement.innerHTML = createIconHTML('backspace');
-          this.key = '93';
 
           keyElement.addEventListener('click', () => {
-            this.properties.value = this.properties.value.substring(0,
-              this.properties.value.length - 1);
-            this.triggerEvent('oninput');
-          });
-
-          keyElement.addEventListener('keydown', () => {
             this.properties.value = this.properties.value.substring(0,
               this.properties.value.length - 1);
             this.triggerEvent('oninput');
@@ -321,7 +313,6 @@ const Keyboard = {
         case 'backspace':
           keyElement.classList.add('keyboard-key-wide');
           keyElement.innerHTML = createIconHTML('backspace');
-          this.key = '93';
 
           keyElement.addEventListener('click', () => {
             this.properties.value = this.properties.value.substring(
@@ -330,12 +321,6 @@ const Keyboard = {
             this.triggerEvent('oninput');
           });
 
-          keyElement.addEventListener('keydown', () => {
-            this.properties.value = this.properties.value.substring(
-              0, this.properties.value.length - 1,
-            );
-            this.triggerEvent('oninput');
-          });
 
           break;
 

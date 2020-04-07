@@ -24,6 +24,7 @@ const Keyboard = {
     this.helptips = document.createElement('div');
     this.main.setAttribute('id', 'KeyboardEN');
     this.mainRU.setAttribute('id', 'KeyboardRU');
+    this.textarea.setAttribute('id', 'Textarea');
 
     this.keysContainer.appendChild(this.createKeys());
     this.keysContainerRU.appendChild(this.createKeysRU());
@@ -44,6 +45,7 @@ const Keyboard = {
     document.body.appendChild(this.mainRU);
     document.body.appendChild(this.helptips);
     this.textarea.placeholder = 'For start working - please click here';
+    document.getElementById('Textarea').focus();
 
     document.querySelectorAll('textarea').forEach((element) => {
       const ele = element;
@@ -542,6 +544,7 @@ const Keyboard = {
 };
 
 document.addEventListener('keydown', (event) => {
+  document.getElementById('Textarea').focus();
   if (event.code === 'Backquote') {
     document.querySelectorAll('li.keyboard-key:nth-child(1)').forEach((el) => el.classList.add('push'));
   }

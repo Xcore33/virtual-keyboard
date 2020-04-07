@@ -22,8 +22,8 @@ const Keyboard = {
     this.keysContainer = document.createElement('ul');
     this.keysContainerRU = document.createElement('ul');
     this.helptips = document.createElement('div');
-    this.main.setAttribute('id', 'KB1');
-    this.mainRU.setAttribute('id', 'KB2');
+    this.main.setAttribute('id', 'KeyboardEN');
+    this.mainRU.setAttribute('id', 'KeyboardRU');
 
     this.keysContainer.appendChild(this.createKeys());
     this.keysContainerRU.appendChild(this.createKeysRU());
@@ -754,24 +754,16 @@ function runOnKeys(func, ...codes) {
 
 runOnKeys(
   () => {
-    const keyEN = document.getElementById('KB2');
+    const keyEN = document.getElementById('KeyboardEN');
+    const keyRU = document.getElementById('KeyboardRU');
     if (keyEN.style.display === 'none') {
+      keyRU.style.display = 'none';
       keyEN.style.display = 'block';
+      localStorage.removeItem('hide', keyEN.style.display);
     } else {
+      keyRU.style.display = 'block';
       keyEN.style.display = 'none';
-    }
-  },
-  'Control',
-  'Alt',
-);
-
-runOnKeys(
-  () => {
-    const keyEN = document.getElementById('KB1');
-    if (keyEN.style.display === 'block') {
-      keyEN.style.display = 'none';
-    } else {
-      keyEN.style.display = 'block';
+      localStorage.setItem('hide', keyEN.style.display);
     }
   },
   'Control',
@@ -788,4 +780,10 @@ document.addEventListener('keyup', (event) => {
 
 window.addEventListener('DOMContentLoaded', () => {
   Keyboard.init();
+  const keyEN = document.getElementById('KeyboardEN');
+  const keyRU = document.getElementById('KeyboardRU');
+  if (localStorage.getItem('hide') === 'none') {
+    keyRU.style.display = 'block';
+    keyEN.style.display = 'none';
+  }
 });

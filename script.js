@@ -102,12 +102,12 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML('arrow_upward');
 
           keyElement.addEventListener('mousedown', () => {
-            this.toggleShiftEN();
+            this.toggleShift();
             this.triggerEvent('oninput');
           });
 
           keyElement.addEventListener('mouseup', () => {
-            this.toggleShiftEN();
+            this.toggleShift();
             this.triggerEvent('oninput');
           });
 
@@ -118,12 +118,12 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML('arrow_upward');
 
           keyElement.addEventListener('mousedown', () => {
-            this.toggleShiftEN();
+            this.toggleShift();
             this.triggerEvent('oninput');
           });
 
           keyElement.addEventListener('mouseup', () => {
-            this.toggleShiftEN();
+            this.toggleShift();
             this.triggerEvent('oninput');
           });
 
@@ -165,8 +165,17 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML('keyboard_capslock');
 
           keyElement.addEventListener('click', () => {
-            this.toggleCapsLockEN();
+            this.toggleCapsLock();
             keyElement.classList.toggle('keyboard-key-active', this.properties.capsLock);
+          });
+          document.addEventListener('keyup', (event) => {
+            if (event.getModifierState('CapsLock')) {
+              this.toggleCapsLock();
+              keyElement.classList.toggle('keyboard-key-active', this.properties.capsLock);
+            } else if (event.code === 'CapsLock') {
+              this.toggleCapsLock();
+              keyElement.classList.toggle('keyboard-key-active', this.properties.capsLock);
+            }
           });
 
           break;
@@ -386,6 +395,13 @@ const Keyboard = {
             this.toggleCapsLock();
             keyElement.classList.toggle('keyboard-key-active', this.properties.capsLock);
           });
+          document.addEventListener('keyup', (event) => {
+            if (event.getModifierState('CapsLock')) {
+              keyElement.classList.toggle('keyboard-key-active', this.properties.capsLock);
+            } else if (event.code === 'CapsLock') {
+              keyElement.classList.toggle('keyboard-key-active', this.properties.capsLock);
+            }
+          });
 
           break;
 
@@ -492,17 +508,6 @@ const Keyboard = {
     }
   },
 
-  toggleCapsLockEN() {
-    this.properties.capsLock = !this.properties.capsLock;
-
-    for (const key of this.elements.CAPS) {
-      if (key.childElementCount === 0) {
-        key.textContent = this.properties.capsLock ? key.textContent.toUpperCase()
-          : key.textContent.toLowerCase();
-      }
-    }
-  },
-
   toggleCapsLock() {
     this.properties.capsLock = !this.properties.capsLock;
 
@@ -512,11 +517,6 @@ const Keyboard = {
           : key.textContent.toLowerCase();
       }
     }
-  },
-
-  toggleShiftEN() {
-    this.properties.capsLock = !this.properties.capsLock;
-
     for (const key of this.elements.CAPS) {
       if (key.childElementCount === 0) {
         key.textContent = this.properties.capsLock ? key.textContent.toUpperCase()
@@ -526,11 +526,17 @@ const Keyboard = {
   },
 
   toggleShift() {
-    this.properties.capsLock = !this.properties.capsLock;
+    this.properties.shift = !this.properties.shift;
 
     for (const key of this.elements.CAPSRU) {
       if (key.childElementCount === 0) {
-        key.textContent = this.properties.capsLock ? key.textContent.toUpperCase()
+        key.textContent = this.properties.shift ? key.textContent.toUpperCase()
+          : key.textContent.toLowerCase();
+      }
+    }
+    for (const key of this.elements.CAPS) {
+      if (key.childElementCount === 0) {
+        key.textContent = this.properties.shift ? key.textContent.toUpperCase()
           : key.textContent.toLowerCase();
       }
     }
@@ -772,14 +778,6 @@ runOnKeys(
   'Control',
   'Alt',
 );
-
-document.addEventListener('keyup', (event) => {
-  if (event.getModifierState('CapsLock')) {
-    document.querySelectorAll('.keyboard-key-activatable').forEach((el) => el.classList.add('keyboard-key-active'));
-  } else {
-    document.querySelectorAll('.keyboard-key-activatable').forEach((el) => el.classList.remove('keyboard-key-active'));
-  }
-});
 
 window.addEventListener('DOMContentLoaded', () => {
   Keyboard.init();

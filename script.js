@@ -22,6 +22,8 @@ const Keyboard = {
     this.keysContainer = document.createElement('ul');
     this.keysContainerRU = document.createElement('ul');
     this.helptips = document.createElement('div');
+    this.main.setAttribute('id', 'KB1');
+    this.mainRU.setAttribute('id', 'KB2');
 
     this.keysContainer.appendChild(this.createKeys());
     this.keysContainerRU.appendChild(this.createKeysRU());
@@ -750,21 +752,26 @@ function runOnKeys(func, ...codes) {
   });
 }
 
-let visible = true;
+runOnKeys(
+  () => {
+    const keyEN = document.getElementById('KB2');
+    if (keyEN.style.display === 'none') {
+      keyEN.style.display = 'block';
+    } else {
+      keyEN.style.display = 'none';
+    }
+  },
+  'Control',
+  'Alt',
+);
 
 runOnKeys(
   () => {
-    const keyEN = document.querySelectorAll('.keyboard');
-    const keyRU = document.querySelectorAll('.keyboard2');
-
-    if (visible) {
-      keyEN.forEach((el) => el.style.display = 'none'),
-      keyRU.forEach((el) => el.style.display = 'block'),
-      visible = false;
+    const keyEN = document.getElementById('KB1');
+    if (keyEN.style.display === 'block') {
+      keyEN.style.display = 'none';
     } else {
-      keyEN.forEach((el) => el.style.display = 'block'),
-      keyRU.forEach((el) => el.style.display = 'none'),
-      visible = true;
+      keyEN.style.display = 'block';
     }
   },
   'Control',

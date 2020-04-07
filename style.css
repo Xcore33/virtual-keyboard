@@ -17,10 +17,11 @@ i.material-icons {
 
   background: linear-gradient(grey, #293f50);
   border: none;
-  border-radius: 50px;;
+  border-radius: 50px;
+  display: block;
 }
 
-.keyboard2 {
+#KB2 {
   display: none;
 }
 

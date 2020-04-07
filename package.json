@@ -1,12 +1,11 @@
 {
   "name": "virtual-keyboard",
   "version": "1.0.0",
-  "description": "",
   "main": "script.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "eslint": "^6.8.0"
   },
-  "devDependencies": {},
   "scripts": {
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix"
@@ -21,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/Xcore33/virtual-keyboard/issues"
   },
-  "homepage": "https://github.com/Xcore33/virtual-keyboard#readme"
+  "homepage": "https://github.com/Xcore33/virtual-keyboard#readme",
+  "description": ""
 }

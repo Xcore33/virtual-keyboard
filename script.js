@@ -111,6 +111,21 @@ const Keyboard = {
             this.triggerEvent('oninput');
           });
 
+          document.addEventListener('keydown', (event) => {
+            if (event.which === 16) {
+              this.toggleShift();
+              keyElement.classList.toggle('keyboard-key-active', this.properties.shift);
+            }
+          });
+
+          document.addEventListener('keyup', (event) => {
+            if (event.which === 16) {
+              this.toggleShift();
+              keyElement.classList.toggle('keyboard-key-active', this.properties.shift);
+            }
+          });
+
+
           break;
 
         case 'shiftR':
